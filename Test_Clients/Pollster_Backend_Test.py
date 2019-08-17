@@ -26,6 +26,9 @@ p = PollsterBackendPolls.PollsterBackendPolls(csv_file='C:/Pollster/polls/presid
                                                               'url', 'stage',
                                                               'party', 'answer', 'candidate_name', 'pct']
                                               )
-r = p.poll_dict
-print(r['state'])
-print(r['answer'])
+print(p.get_poli_points("", "Sanders"))
+print(p.get_poli_avg('', 'Sanders'))
+print(p.get_poli_avg('', 'Warren'))
+print(p.get_poli_avg('', 'Harris'))
+print(p.get_poli_avg('', 'Biden'))
+
