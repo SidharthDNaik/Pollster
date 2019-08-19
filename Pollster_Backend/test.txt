@@ -1,25 +1,11 @@
-p = PollsterBackendPolls.PollsterBackendPolls(csv_file='C:/Programming Project/polls/president_primary_polls.csv',
-                                              poll_dict={'question_id': [], 'poll_id': [], 'cycle': [], 'state': [],
-                                                         'pollster_id': [],
-                                                         'pollster': [], 'sponsor_ids': [], 'sponsors': [],
-                                                         'display_name': [],
-                                                         'pollster_rating_id': [], 'pollster_rating_name': [],
-                                                         'fte_grade': [], 'sample_size': [],
-                                                         'population': [], 'population_full': [], 'methodology': [],
-                                                         'office_type': [],
-                                                         'start_date': [], 'end_date:': [], 'sponsor_candidate': [],
-                                                         'internal': [], 'partisan': [],
-                                                         'tracking': [], 'nationwide_batch': [], 'created_at': [],
-                                                         'notes': [], 'url': [], 'stage': [],
-                                                         'party': [], 'answer': [], 'candidate_name': [], 'pct': []},
-                                              poll_dict_keys=['question_id', 'poll_id', 'cycle', 'state', 'pollster_id',
-                                                              'pollster', 'sponsor_ids', 'sponsors', 'display_name',
-                                                              'pollster_rating_id', 'pollster_rating_name', 'fte_grade',
-                                                              'sample_size',
-                                                              'population', 'population_full', 'methodology',
-                                                              'office_type',
-                                                              'start_date', 'end_date:', 'sponsor_candidate',
-                                                              'internal', 'partisan',
-                                                              'tracking', 'nationwide_batch', 'created_at', 'notes',
-                                                              'url', 'stage',
-                                                              'party', 'answer', 'candidate_name', 'pct']
+29.875268292682918
+8.804312796208531
+17.556285714285714
+10.172559241706162
+1.3254216867469877
+
+29.8345933014354
+8.780046511627907
+17.51785046728972
+10.187953488372097
+1.3471764705882352

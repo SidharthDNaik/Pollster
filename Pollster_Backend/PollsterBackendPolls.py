@@ -42,6 +42,9 @@ class PollsterBackendPolls(PollsterBackendBase.PollsterBackendBase):
         return date_1_array
 
     def check_date_1_greater_o_eq(self, date_1, date_2, i=2) -> bool:
+        if i == 2:
+            date_1[i] = date_1[i].replace('20', '')
+            date_2[i] = date_2[i].replace('20', '')
         if i >= 0 and (int(date_1[i]) == int(date_2[i])):
             return self.check_date_1_greater_o_eq(date_1, date_2, i - 1)
         elif i >= 0 and int(date_1[i]) > int(date_2[i]):
