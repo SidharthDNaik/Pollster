@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def project_run():
-    return render_template('index.html')
+    return render_template('national_poll_panel.html')
 
 
 if __name__ == "__main__":
