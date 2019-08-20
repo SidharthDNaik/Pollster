@@ -1,4 +1,6 @@
 from Pollster_Backend import PollsterBackendPolls
+from flask import Flask
+app = Flask(__name__)
 
 p = PollsterBackendPolls.PollsterBackendPolls(csv_file='C:/Pollster/polls/president_primary_polls.csv',
                                               poll_dict={'question_id': [], 'poll_id': [], 'cycle': [], 'state': [],
@@ -26,13 +28,25 @@ p = PollsterBackendPolls.PollsterBackendPolls(csv_file='C:/Pollster/polls/presid
                                                               'url', 'stage',
                                                               'party', 'answer', 'candidate_name', 'pct']
                                               )
-print(p.get_poli_points("", "Sanders", '7/27/19', '8/20/2019'))
-print(p.get_poli_avg("", "Biden", '7/27/19', '8/20/2019'))
-print(p.get_poli_avg("", "Harris", '7/27/19', '8/20/2019'))
-print(p.get_poli_avg("", "Sanders", '7/27/19', '8/20/2019'))
-print(p.get_poli_avg("", "Warren", '7/27/19', '8/20/2019'))
-print(p.get_poli_avg("", "Yang", '7/27/19', '8/20/2019'))
-r = p.get_polls_list("", '8/15/19', '8/20/2019')
-print(r)
-print(p.get_poli_avg("", "Yang", '7/27/19', '8/20/2019'))
+"""
+    print(p.get_poli_points("", "Sanders", '7/27/19', '8/20/2019'))
+    print(p.get_poli_avg("", "Biden", '7/27/19', '8/20/2019'))
+    print(p.get_poli_avg("", "Harris", '7/27/19', '8/20/2019'))
+    print(p.get_poli_avg("", "Sanders", '7/27/19', '8/20/2019'))
+    print(p.get_poli_avg("", "Warren", '7/27/19', '8/20/2019'))
+    print(p.get_poli_avg("", "Yang", '7/27/19', '8/20/2019'))
+    r = p.get_polls_list("", '8/15/19', '8/20/2019')
+    print(r)
+    print(p.get_poli_avg("", "Yang", '7/27/19', '8/20/2019'))
+"""
+
+
+@app.route("/")
+def pollster_main():
+    return str(p.get_polls_list("", '8/15/19', '8/20/2019'))
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
 
