@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Pollster</title>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-color: lightblue;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
 </head>
-<body>
-    <h1 style="color:black; font-family: 'Times New Roman',sans-serif; vertical-align: center">National Polls</h1>
-</body>
+    <body>
+        <h1 style="color:black; font-family: 'Times New Roman',sans-serif; font-size: 60px">National Polls</h1>
+        <div style="width:100%;">
+            <canvas
+                    id="nationalPolls" width="704" height="352"></canvas>
+        </div>
+        <script src="/node_modules/chart.js/dist/Chart.js"></script>
+        <script src="/poll_charts_js/NationalPollsChart.js"></script>
+    </body>
 </html>
