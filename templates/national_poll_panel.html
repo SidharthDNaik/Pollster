@@ -1,24 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Pollster</title>
     <meta charset="UTF-8">
     <style>
         body{
-            background-color: lightblue;
+            background-color: lightgray;
         }
         h1{
             text-align: center;
         }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+          position: relative;
+          display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #f1f1f1;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #ddd}
+
+        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+        .show {display:block;}
     </style>
 </head>
     <body>
-        <h1 style="color:black; font-family: 'Times New Roman',sans-serif; font-size: 60px">National Polls</h1>
-        <div style="width:100%;">
-            <canvas
-                    id="nationalPolls" width="704" height="352"></canvas>
+        <h1 style="color:black; font-family: 'Times New Roman',sans-serif; font-size: 50px">National Polls</h1>
+        <div style="background-color: white; padding-left: 0;
+                    padding-right: 0; margin-left: auto; margin-right: auto; display: block; width: 1300px">
+            <canvas id="nationalPolls" width="704" height="352"></canvas>
         </div>
-        <script src="/node_modules/chart.js/dist/Chart.js"></script>
-        <script src="/poll_charts_js/NationalPollsChart.js"></script>
+        <div class="btn-group"
+             style="margin-top: 10px; padding-left: 0; padding-right: 0; margin-left: auto; margin-right: auto;
+                    display: block; width: 1300px">
+            <button type="button" class="btn btn-secondary">Max</button>
+            <button type="button" class="btn btn-secondary">3 Months</button>
+            <button type="button" class="btn btn-secondary">1 Month</button>
+            <div class="dropdown">
+                <button type="button" class="btn btn-secondary dropbtn" onclick="myFunction()">Range</button>
+                <div id="rangeDropDown" class="dropdown-content">
+                    <a href="#">Ranges Choices</a>
+                </div>
+            </div>
+        <script>
+            data = {
+                        labels: [],
+                        datasets: [
+                            {
+                                label: 'Joe Biden',
+                                fill: false,
+                                data: [12, 19, 3, 5, 2, 3, 6, 38],
+                                backgroundColor: [
+                                    'rgba(215, 60, 60, 1)'
+                                ],
+                                borderColor: [
+                                    'rgba(215, 60, 60, 1)'
+                                ],
+                                borderWidth: 3
+                        }, {
+                                label: 'Bernie Sanders',
+                                fill: false,
+                                data: [26, 19, 15, 15, 12, 13],
+                                backgroundColor: [
+                                    'rgba(136, 231, 163, 1)'
+                                ],
+                                borderColor: [
+                                    'rgba(136, 231, 163, 1)'
+                                ],
+                                borderWidth: 3
+                        }],
+                    };
+            options = {
+                responsive: true,
+            };
+            const ctx = document.getElementById("nationalPolls").getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {}
+            });
+        </script>
+
     </body>
 </html>
