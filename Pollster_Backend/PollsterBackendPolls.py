@@ -72,6 +72,13 @@ class PollsterBackendPolls(PollsterBackendBase.PollsterBackendBase):
                     )
         return polls_list
 
+    def get_poll_dates(self, st_or_nat, start_date, end_date) -> list:
+        poll_list = self.get_polls_list(st_or_nat, start_date, end_date)
+        poll_dates = []
+        for i in poll_list:
+            poll_dates.append(i[2])
+        return poll_dates
+
     def get_poli_avg(self, st_or_nat, poli_name, start_date, end_date) -> float:
         """
         This method gets the average pct of polling data for a candidate.
