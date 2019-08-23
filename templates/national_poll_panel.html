@@ -7,69 +7,44 @@
     <meta charset="UTF-8">
     <style>
         body{
-            background-color: lightgray;
+            background-color: white;
         }
         h1{
             text-align: center;
         }
+        button{
 
-        /* The container <div> - needed to position the dropdown content */
-        .dropdown {
-          position: relative;
-          display: inline-block;
         }
-
-        /* Dropdown Content (Hidden by Default) */
-        .dropdown-content {
-          display: none;
-          position: absolute;
-          background-color: #f1f1f1;
-          min-width: 160px;
-          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-          z-index: 1;
-        }
-
-        /* Links inside the dropdown */
-        .dropdown-content a {
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-        }
-
-        /* Change color of dropdown links on hover */
-        .dropdown-content a:hover {background-color: #ddd}
-
-        /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-        .show {display:block;}
     </style>
 </head>
     <body>
         <h1 style="color:black; font-family: 'Times New Roman',sans-serif; font-size: 50px">National Polls</h1>
-        <div style="background-color: white; padding-left: 0;
-                    padding-right: 0; margin-left: auto; margin-right: auto; display: block; width: 1300px">
-            <canvas id="nationalPolls" width="704" height="352"></canvas>
+        <div style="padding-left: 20px; width: 1000px">
+            <canvas id="nationalPolls" width="1000" height="500"> </canvas>
         </div>
         <div class="btn-group"
-             style="margin-top: 10px; padding-left: 0; padding-right: 0; margin-left: auto; margin-right: auto;
-                    display: block; width: 1300px">
-            <button type="button" class="btn btn-secondary">Max</button>
-            <button type="button" class="btn btn-secondary">3 Months</button>
-            <button type="button" class="btn btn-secondary">1 Month</button>
-            <div class="dropdown">
-                <button type="button" class="btn btn-secondary dropbtn" onclick="myFunction()">Range</button>
-                <div id="rangeDropDown" class="dropdown-content">
-                    <a href="#">Ranges Choices</a>
-                </div>
+             style="margin-top: 10px; padding-left: 23px; width: 900px; height: 38.2px">
+            <div style="margin-right: 3px">
+                <button type="button" class="btn btn-secondary" style="width: 70px">Max</button>
+                <button type="button" class="btn btn-secondary">3 Months</button>
+                <button type="button" class="btn btn-secondary">1 Month</button>
             </div>
+            <div class="input-group mb-3" style="width: 500px">
+              <div class="input-group-append">
+                <button class="btn btn-secondary" type="button" id="button-addon2">Apply</button>
+              </div>
+                <input type="text" class="form-control" placeholder="Start Date: ex. 7/12/18" aria-label="Start Date" aria-describedby="button-addon2">
+                <input type="text" class="form-control" placeholder="End Date: ex. 8/14/19" aria-label="Start Date" aria-describedby="button-addon2">
+            </div>
+        </div>
         <script>
             data = {
-                        labels: ['8/19/19', '8/16/19', '8/16/19', '8/15/19', '8/14/19', '8/13/19', '8/13/19', '8/13/19', '8/12/19', '8/11/19', '8/11/19', '8/10/19', '8/10/19', '8/9/19', '8/9/19', '8/8/19', '8/7/19', '8/6/19', '8/6/19', '8/5/19', '8/5/19', '8/5/19', '8/5/19', '8/4/19', '8/4/19', '8/4/19', '8/4/19', '8/4/19', '8/3/19', '8/2/19', '8/2/19', '8/1/19', '8/1/19', '8/1/19', '8/1/19', '7/31/19', '7/31/19', '7/30/19', '7/30/19', '7/30/19', '7/29/19', '7/29/19', '7/29/19', '7/28/19', '7/28/19', '7/28/19', '7/28/19', '7/28/19', '7/28/19', '7/27/19', '7/27/19'],
+                        labels: ['7/27/19', '7/27/19', '7/28/19', '7/28/19', '7/28/19', '7/28/19', '7/28/19', '7/28/19', '7/29/19', '7/29/19', '7/29/19', '7/30/19', '7/30/19', '7/30/19', '7/31/19', '7/31/19', '8/1/19', '8/1/19', '8/1/19', '8/1/19', '8/2/19', '8/2/19', '8/3/19', '8/4/19', '8/4/19', '8/4/19', '8/4/19', '8/4/19', '8/5/19', '8/5/19', '8/5/19', '8/5/19', '8/6/19', '8/6/19', '8/7/19', '8/8/19', '8/9/19', '8/9/19', '8/10/19', '8/10/19', '8/11/19', '8/11/19', '8/12/19', '8/13/19', '8/13/19', '8/13/19', '8/14/19', '8/15/19', '8/16/19', '8/16/19', '8/19/19'],
                         datasets: [
                             {
                                 label: 'Joe Biden',
                                 fill: false,
-                                data: ['27.0', '27.0', '29.0', '28.0', '29.0', '31.0', '28.0', '21.0', '30.0', '30.0', '33.0', '31.0', '31.0', '29.0', '28.0', '27.0', '25.0', '25.0', '22.0', '27.0', '22.4', '25.0', '32.0', '33.0', '23.0', '28.0', '33.0', '36.0', '26.0', '29.0', '28.0', '29.0', '32.0', '34.0', '30.0', '30.0', '34.0', '30.0', '35.0', '30.0', '26.0', '34.0', '32.0', '32.8', '34.0', '34.0', '34.0', '28.0', '33.0', '31.0', '34.0', '33.0'],
+                                data: ['33.0', '34.0', '31.0', '33.0', '28.0', '34.0', '34.0', '34.0', '32.8', '32.0', '34.0', '26.0', '30.0', '35.0', '30.0', '34.0', '30.0', '30.0', '34.0', '32.0', '29.0', '28.0', '29.0', '26.0', '36.0', '33.0', '28.0', '23.0', '33.0', '32.0', '25.0', '22.4', '27.0', '22.0', '25.0', '25.0', '27.0', '28.0', '29.0', '31.0', '31.0', '33.0', '30.0', '30.0', '21.0', '28.0', '31.0', '29.0', '28.0', '29.0', '27.0', '27.0'],
                                 backgroundColor: [
                                     'rgba(215, 60, 60, 1)'
                                 ],
@@ -80,7 +55,7 @@
                         }, {
                                 label: 'Bernie Sanders',
                                 fill: false,
-                                data: ['17.0', '16.0', '15.0', '14.0', '14.0', '10.0', '15.0', '16.0', '16.0', '17.0', '20.0', '16.0', '15.0', '15.0', '16.0', '15.0', '17.0', '17.0', '13.0', '16.0', '18.4', '20.0', '14.0', '20.0', '23.0', '14.0', '19.0', '12.0', '12.0', '16.0', '16.0', '17.0', '18.0', '17.0', '18.0', '12.0', '19.0', '17.0', '18.0', '15.0', '13.0', '18.0', '15.0', '20.1', '18.0', '20.0', '11.0', '15.0', '18.0', '22.0', '19.0', '14.0'],
+                                data: ['14.0', '19.0', '22.0', '18.0', '15.0', '11.0', '20.0', '18.0', '20.1', '15.0', '18.0', '13.0', '15.0', '18.0', '17.0', '19.0', '12.0', '18.0', '17.0', '18.0', '17.0', '16.0', '16.0', '12.0', '12.0', '19.0', '14.0', '23.0', '20.0', '14.0', '20.0', '18.4', '16.0', '13.0', '17.0', '17.0', '15.0', '16.0', '15.0', '15.0', '16.0', '20.0', '17.0', '16.0', '16.0', '15.0', '10.0', '14.0', '14.0', '15.0', '16.0', '17.0'],
                                 backgroundColor: [
                                     'rgba(136, 231, 163, 1)'
                                 ],
@@ -92,7 +67,7 @@
                         {
                                 label: 'Elizabeth Warren',
                                 fill: false,
-                                data: ['9.0', '12.0', '11.0', '12.0', '11.0', '20.0', '10.0', '20.0', '10.0', '9.0', '14.0', '10.0', '9.0', '8.0', '10.0', '9.0', '11.0', '11.0', '16.0', '11.0', '8.7', '10.0', '21.0', '19.0', '26.0', '9.0', '15.0', '13.0', '16.0', '9.0', '8.0', '9.0', '15.0', '8.0', '9.0', '17.0', '14.0', '8.0', '13.0', '8.0', '18.0', '14.0', '9.0', '14.1', '14.0', '12.0', '15.0', '9.0', '13.0', '15.0', '14.0', '10.0'],
+                                data: ['10.0', '14.0', '15.0', '13.0', '9.0', '15.0', '12.0', '14.0', '14.1', '9.0', '14.0', '18.0', '8.0', '13.0', '8.0', '14.0', '17.0', '9.0', '8.0', '15.0', '9.0', '8.0', '9.0', '16.0', '13.0', '15.0', '9.0', '26.0', '19.0', '21.0', '10.0', '8.7', '11.0', '16.0', '11.0', '11.0', '9.0', '10.0', '8.0', '9.0', '10.0', '14.0', '9.0', '10.0', '20.0', '10.0', '20.0', '11.0', '12.0', '11.0', '12.0', '9.0'],
                                 backgroundColor: [
                                     'rgba(13, 31, 13, 1)'
                                 ],
